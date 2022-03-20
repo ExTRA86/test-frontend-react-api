@@ -62,7 +62,7 @@ const VoluteItem = () => {
                   <td>{volute.Date}</td>
                 </tr>
               ))}
-              <tr>
+              <tr className='table__tr-button'>
                 <th></th>
                 <th></th>
                 <th></th>
