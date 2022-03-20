@@ -1,5 +1,6 @@
 .App {
   margin: 10px;
+  text-align: center;
 }
 
 .App th {
@@ -7,13 +8,22 @@
 }
 
 .App td {
-  text-align: center;
   cursor: pointer;
 }
 
-.App tr:hover::after {
-  content: attr(data-description);
+.App tbody tr:hover {
+  background-color: rgba(172, 172, 172, 0.377);
+}
+
+.tooltip {
   position: absolute;
+  padding: 2px 5px 2px 5px;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.table__tr-button:hover {
+  background-color: transparent !important;
 }
 
 .table__item td {

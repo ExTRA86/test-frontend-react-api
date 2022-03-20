@@ -6,6 +6,9 @@ import { useFetching } from '../hooks/useFetching';
 
 const VolutesList = () => {
   const [volutes, setVolutes] = useState([]);
+  const [mouseLocation, setMouseLocation] = useState({ x: 0, y: 0 });
+  const [isTooltipShown, setIsTooltipShown] = useState(false);
+  const [description, setDescription] = useState('');
 
   const router = useNavigate();
 
@@ -18,6 +21,19 @@ const VolutesList = () => {
     fetchData();
     // eslint-disable-next-line
   }, []);
+
+  const voluteHover = (event, name) => {
+    setDescription(name);
+    setMouseLocation({
+      x: event.pageX,
+      y: event.pageY + 25,
+    });
+    setIsTooltipShown(true);
+  };
+
+  const voluteLeave = () => {
+    setIsTooltipShown(false);
+  };
 
   return (
     <div>
@@ -38,8 +54,9 @@ const VolutesList = () => {
             {volutes.map(volute => (
               <tr
                 key={volute.ID}
-                data-description={volute.Name}
                 onClick={() => router('/volute/' + volute.CharCode)}
+                onMouseMove={e => voluteHover(e, volute.Name)}
+                onMouseLeave={voluteLeave}
               >
                 <td>{volute.NumCode}</td>
                 <td>{volute.Value}</td>
@@ -56,6 +73,16 @@ const VolutesList = () => {
       ) : (
         <Loader />
       )}
+      <div
+        className='tooltip'
+        style={{
+          display: isTooltipShown ? 'block' : 'none',
+          top: mouseLocation.y,
+          left: mouseLocation.x,
+        }}
+      >
+        {description}
+      </div>
     </div>
   );
 };
