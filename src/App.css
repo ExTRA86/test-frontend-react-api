@@ -1,6 +1,8 @@
 .App {
-  margin: 10px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .App th {
@@ -39,8 +41,9 @@
 }
 
 .loader {
-  text-align: center;
-  margin: 0 auto;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
   width: 200px;
   height: 200px;
   border-radius: 50%;
