@@ -41,11 +41,14 @@
 }
 
 .loader {
+  margin: auto;
   position: absolute;
-  top: 50vh;
-  left: 50vw;
-  width: 200px;
-  height: 200px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   border: 3px dashed #4b51ef;
   animation: rotate 1.7s infinite linear;
